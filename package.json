@@ -1,0 +1,62 @@
+{
+  "name": "chuvak-chervyak",
+  "productName": "Чувак Червяк",
+  "version": "1.0.0",
+  "description": "Учебная папка, Нейро-нора и игра «Угадай флаг» в одном приложении для Windows",
+  "author": "Чувак Червяк",
+  "license": "UNLICENSED",
+  "private": true,
+  "main": "main.js",
+  "scripts": {
+    "postinstall": "node scripts/vendor.js",
+    "vendor": "node scripts/vendor.js",
+    "start": "node scripts/vendor.js && electron .",
+    "dev": "node scripts/vendor.js && electron . --dev",
+    "test": "node --test",
+    "dist": "node scripts/vendor.js --strict && electron-builder --win --x64"
+  },
+  "devDependencies": {
+    "@fontsource/onest": "^5.1.0",
+    "@fontsource/pixelify-sans": "^5.1.0",
+    "electron": "^33.2.0",
+    "electron-builder": "^25.1.8",
+    "jszip": "3.10.1",
+    "mammoth": "1.6.0",
+    "xlsx": "0.18.5"
+  },
+  "build": {
+    "appId": "ru.chuvak.chervyak",
+    "productName": "Чувак Червяк",
+    "copyright": "Чувак Червяк",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "lib/**/*",
+      "app/**/*",
+      "build/icon.png",
+      "package.json"
+    ],
+    "win": {
+      "icon": "build/icon.ico",
+      "target": [
+        "nsis",
+        "portable"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Чувак Червяк",
+      "language": "1049",
+      "artifactName": "ChuvakChervyak-Setup-${version}.${ext}"
+    },
+    "portable": {
+      "artifactName": "ChuvakChervyak-Portable-${version}.${ext}"
+    }
+  }
+}
